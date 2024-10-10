@@ -2,26 +2,123 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.kenya-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(234, 85, 4, 0.8) 0%,
+    rgba(255, 153, 0, 0.8) 100%
+  );
+}
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+
+.timeline-container {
+  background-image: linear-gradient(
+      rgba(244, 154, 37, 0.1) 0%,
+      rgba(244, 154, 37, 0.1) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f49a25' fill-opacity='0.1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.magical-carousel .slick-slide {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.magical-carousel .slick-slide.slick-active {
+  opacity: 1;
+}
+
+.magical-carousel .slick-slide img {
+  transition: transform 10s ease-in-out;
+}
+
+.magical-carousel .slick-slide.slick-active img {
+  transform: scale(1.1);
+}
+.opacity-0 {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.7;
+  }
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.active-dot {
+  animation: pulse 2s infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+  opacity: 0;
 }
