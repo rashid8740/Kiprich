@@ -51,7 +51,7 @@ export default function Header() {
           <NavLink href="/">Home</NavLink>
           <NavLink href="/about">About</NavLink>
           <NavLink href="/destinations">Destinations</NavLink>
-          <NavLink href="/pricing">Pricing</NavLink>
+          <NavLink href="/gallery">Gallery</NavLink>
           <NavLink href="/faq">FAQ</NavLink>
         </div>
         <div className="flex items-center gap-4">
@@ -103,7 +103,7 @@ export default function Header() {
             <NavLink href="/">Home</NavLink>
             <NavLink href="/about">About</NavLink>
             <NavLink href="/destinations">Destinations</NavLink>
-            <NavLink href="/pricing">Pricing</NavLink>
+            <NavLink href="/gallery">Gallery</NavLink>
             <NavLink href="/faq">FAQ</NavLink>
             <button className="bg-[#f49a25] text-[#1c150d] px-4 py-2 rounded-full text-sm font-bold hover:bg-[#e38d1e] transition-colors self-start">
               Book a Safari
