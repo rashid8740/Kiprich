@@ -2,11 +2,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faQuestionCircle,
-  faChevronDown,
-  faChevronUp,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 const faqData = [
   {
@@ -121,7 +117,7 @@ const FAQPage = () => {
           className="text-center mt-12"
         >
           <p className="text-[#3c2a1a] mb-4">
-            Still have questions? We're here to help!
+            Still have questions? We&apos;re here to help!
           </p>
           <a
             href="/contact"
