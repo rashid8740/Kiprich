@@ -11,6 +11,10 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   const NavLink = ({ href, children }) => {
     const isActive = pathname === href;
     return (
@@ -19,6 +23,7 @@ export default function Header() {
         className={`text-sm font-medium transition-colors ${
           isActive ? "text-[#f49a25]" : "hover:text-[#f49a25]"
         }`}
+        onClick={closeMenu}
       >
         {children}
       </Link>
@@ -105,7 +110,10 @@ export default function Header() {
             <NavLink href="/destinations">Destinations</NavLink>
             <NavLink href="/gallery">Gallery</NavLink>
             <NavLink href="/faq">FAQ</NavLink>
-            <button className="bg-[#f49a25] text-[#1c150d] px-4 py-2 rounded-full text-sm font-bold hover:bg-[#e38d1e] transition-colors self-start">
+            <button
+              className="bg-[#f49a25] text-[#1c150d] px-4 py-2 rounded-full text-sm font-bold hover:bg-[#e38d1e] transition-colors self-start"
+              onClick={closeMenu}
+            >
               Book a Safari
             </button>
           </div>
