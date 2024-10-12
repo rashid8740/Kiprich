@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -15,13 +13,10 @@ const destinations = [
   { name: "Mount Kenya", lat: -0.1521, lng: 37.3084 },
 ];
 
-const MapComponent = () => {
+const MapContent = () => {
   const [activeDestination, setActiveDestination] = useState(null);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-
     // Fix for default marker icon
     delete L.Icon.Default.prototype._getIconUrl;
     L.Icon.Default.mergeOptions({
@@ -34,75 +29,42 @@ const MapComponent = () => {
     });
   }, []);
 
-  if (!isMounted) {
-    return (
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-8">
-            Explore Kenya's Top Destinations
-          </h2>
-          <div className="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
-            <div className="h-[60vh] md:h-[70vh] lg:h-[80vh] flex items-center justify-center">
-              <p>Loading map...</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-8">
-          Explore Kenya's Top Destinations
-        </h2>
-        <div className="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
-          <div className="h-[60vh] md:h-[70vh] lg:h-[80vh]">
-            <MapContainer
-              center={[0.0236, 37.9062]}
-              zoom={6}
-              style={{ height: "100%", width: "100%" }}
-            >
-              <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              />
-              {destinations.map((dest) => (
-                <Marker
-                  key={dest.name}
-                  position={[dest.lat, dest.lng]}
-                  eventHandlers={{
-                    click: () => setActiveDestination(dest),
-                  }}
-                >
-                  <Popup>
-                    <div className="font-semibold">{dest.name}</div>
-                  </Popup>
-                </Marker>
-              ))}
-            </MapContainer>
-          </div>
-          {activeDestination && (
-            <div className="p-4 bg-[#f49a25] text-white">
-              <h3 className="text-xl font-bold mb-2">
-                {activeDestination.name}
-              </h3>
-              <p>
-                Latitude: {activeDestination.lat.toFixed(4)}, Longitude:{" "}
-                {activeDestination.lng.toFixed(4)}
-              </p>
-            </div>
-          )}
-        </div>
-        <div className="mt-8 text-center">
-          <p className="text-gray-600">
-            Click on a marker to see more information about each destination.
+    <>
+      <MapContainer
+        center={[0.0236, 37.9062]}
+        zoom={6}
+        style={{ height: "100%", width: "100%" }}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        {destinations.map((dest) => (
+          <Marker
+            key={dest.name}
+            position={[dest.lat, dest.lng]}
+            eventHandlers={{
+              click: () => setActiveDestination(dest),
+            }}
+          >
+            <Popup>
+              <div className="font-semibold">{dest.name}</div>
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+      {activeDestination && (
+        <div className="p-4 bg-[#f49a25] text-white">
+          <h3 className="text-xl font-bold mb-2">{activeDestination.name}</h3>
+          <p>
+            Latitude: {activeDestination.lat.toFixed(4)}, Longitude:{" "}
+            {activeDestination.lng.toFixed(4)}
           </p>
         </div>
-      </div>
-    </section>
+      )}
+    </>
   );
 };
 
-export default MapComponent;
+export default MapContent;
