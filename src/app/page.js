@@ -12,8 +12,8 @@ export default function Home() {
       <Hero />
       <Features />
       <Destinations />
-      <BookingSafari />
       <BigFive />
+      <BookingSafari />
       <Conservation />
       <Testimonials />
     </main>

@@ -1,3 +1,4 @@
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTree, faPaw, faUsers } from "@fortawesome/free-solid-svg-icons";
 
@@ -21,30 +22,35 @@ export default function Conservation() {
   ];
 
   return (
-    <section className="my-16 bg-[#1c150d] text-white p-8 rounded-lg">
-      <h2 className="text-3xl font-bold mb-8 text-center">
+    <section className="my-8 sm:my-12 md:my-16 bg-[#1c150d] text-white p-4 sm:p-6 md:p-8 rounded-lg">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 md:mb-8 text-center">
         Join Our Conservation Efforts
       </h2>
-      <p className="text-center mb-8">
+      <p className="text-sm sm:text-base md:text-lg text-center mb-6 sm:mb-8 max-w-2xl mx-auto">
         At Kiprich Safaris, we're committed to preserving Kenya's natural beauty
         and wildlife for future generations.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {efforts.map((effort, index) => (
-          <div key={index} className="text-center">
+          <div
+            key={index}
+            className="text-center bg-[#2c2519] p-4 sm:p-6 rounded-lg transition-transform duration-300 hover:scale-105"
+          >
             <FontAwesomeIcon
               icon={effort.icon}
-              className="text-4xl mb-4 text-[#f49a25]"
+              className="text-3xl sm:text-4xl mb-3 sm:mb-4 text-[#f49a25]"
             />
-            <h3 className="font-bold text-xl mb-2">{effort.title}</h3>
-            <p>{effort.description}</p>
+            <h3 className="font-bold text-lg sm:text-xl mb-2">
+              {effort.title}
+            </h3>
+            <p className="text-sm sm:text-base">{effort.description}</p>
           </div>
         ))}
       </div>
-      <div className="text-center mt-8">
+      <div className="text-center mt-6 sm:mt-8 md:mt-10">
         <a
           href="#"
-          className="bg-[#f49a25] text-[#1c150d] px-6 py-3 rounded-full text-lg font-bold hover:bg-[#e38d1e] transition-colors inline-block"
+          className="bg-[#f49a25] text-[#1c150d] px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base md:text-lg font-bold hover:bg-[#e38d1e] transition-colors inline-block"
         >
           Learn More About Our Conservation
         </a>

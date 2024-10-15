@@ -25,9 +25,11 @@ export default function Destinations() {
   ];
 
   return (
-    <section className="my-12">
-      <h2 className="text-2xl font-bold mb-6">Popular Destinations</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <section className="my-8 sm:my-12">
+      <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
+        Popular Destinations
+      </h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
         {destinations.map((destination, index) => (
           <div key={index} className="group">
             <div className="overflow-hidden rounded-lg">
@@ -36,10 +38,12 @@ export default function Destinations() {
                 alt={destination.name}
                 width={800}
                 height={600}
-                className="w-full h-48 object-cover rounded-lg mb-2 group-hover:scale-110 transition-transform duration-300"
+                className="w-full h-32 sm:h-40 md:h-48 object-cover rounded-lg group-hover:scale-110 transition-transform duration-300"
               />
             </div>
-            <p className="font-medium mt-2">{destination.name}</p>
+            <p className="font-medium mt-2 text-sm sm:text-base">
+              {destination.name}
+            </p>
           </div>
         ))}
       </div>
