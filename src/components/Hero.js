@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +8,10 @@ import {
   faCompass,
   faPaw,
   faMountain,
+  faAngleDown,
+  faCalendarAlt,
+  faStar,
+  faPlay,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function HeroBanner() {
@@ -17,115 +22,141 @@ export default function HeroBanner() {
   }, []);
 
   return (
-    <header className="relative bg-gradient-to-r from-[#f49a25] to-[#f4c425] text-white py-16 sm:py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-black opacity-40"></div>
+    <header className="relative h-[75vh] mt-4 mb-24 rounded-t-[1rem] overflow-hidden">
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1c150d]/90 to-transparent z-10" />
 
-      {/* Geometric shapes */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-white opacity-10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-white opacity-10 rounded-full translate-x-1/3 translate-y-1/3"></div>
-
-      {/* Background Image */}
-      <div className="absolute inset-0 opacity-60">
+      {/* Main Background */}
+      <div className="absolute inset-0 -z-10">
         <Image
           src="https://images.unsplash.com/photo-1633247487039-f4d8062e8bf5?q=80&w=1890&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Kenyan Safari"
           layout="fill"
           objectFit="cover"
           priority
+          className="object-cover"
         />
       </div>
 
-      <div className="relative container mx-auto px-4 z-10">
-        <div className="flex flex-col items-center">
-          <div
-            className={`transition-all duration-1000 ${
-              isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-90"
-            }`}
-          >
-            <FontAwesomeIcon
-              icon={faBinoculars}
-              className="text-5xl sm:text-6xl mb-6 sm:mb-8 animate-pulse text-[#FFD700]"
-            />
-          </div>
-          <h1
-            className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-center mb-4 sm:mb-6 tracking-tight transition-all duration-1000 ${
-              isLoaded
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
-          >
-            Discover Kenya's <span className="text-[#FFD700]">Magic</span>
-          </h1>
-          <div
-            className={`w-24 h-1 bg-white mb-6 sm:mb-8 transition-all duration-1000 delay-300 ${
-              isLoaded ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
-            }`}
-          ></div>
-          <p
-            className={`text-lg sm:text-xl text-center max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-10 transition-all duration-1000 delay-500 ${
-              isLoaded
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
-          >
-            Experience the breathtaking beauty of East Africa's wildlife and
-            embark on an unforgettable journey through Kenya's diverse
-            landscapes
-          </p>
-          <button
-            className={`bg-white text-[#f49a25] px-6 sm:px-8 py-3 sm:py-4 rounded-full text-lg sm:text-xl font-bold hover:bg-[#FFD700] hover:text-[#1c150d] transition-all duration-300 transform hover:scale-105 hover:shadow-lg mb-8 sm:mb-12 ${
-              isLoaded
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
-          >
-            Start Your Adventure
-          </button>
-        </div>
-
-        {/* Feature Icons */}
-        <div className="flex justify-center space-x-4 sm:space-x-8 lg:space-x-16">
-          {[
-            { icon: faCompass, text: "Guided Tours" },
-            { icon: faPaw, text: "Wildlife Encounters" },
-            { icon: faMountain, text: "Scenic Landscapes" },
-          ].map((item, index) => (
+      {/* Content Container */}
+      <div className="relative container mx-auto px-4 h-full flex flex-col justify-center z-20">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
+          {/* Left Column - Main Content */}
+          <div className="space-y-4 md:space-y-6 lg:space-y-8">
             <div
-              key={index}
-              className={`flex flex-col items-center transition-all duration-1000 delay-${
-                700 + index * 200
-              } ${
+              className={`inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full transition-all duration-700 ${
+                isLoaded
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-10"
+              }`}
+            >
+              <FontAwesomeIcon icon={faStar} className="text-[#f49a25]" />
+              <span className="text-white text-xs md:text-sm">
+                Top-rated Safari Experience
+              </span>
+            </div>
+
+            <h1
+              className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight transition-all duration-1000 ${
+                isLoaded
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-10"
+              }`}
+            >
+              Experience
+              <br />
+              <span className="text-[#f49a25]">Wild Kenya</span>
+              <br className="hidden md:block" />
+              Like Never Before
+            </h1>
+
+            <p
+              className={`text-base md:text-lg text-white/80 max-w-xl transition-all duration-1000 delay-300 ${
+                isLoaded
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-10"
+              }`}
+            >
+              Embark on an unforgettable journey through Kenya's most stunning
+              landscapes and encounter majestic wildlife in their natural
+              habitat.
+            </p>
+
+            <div
+              className={`flex flex-col sm:flex-row gap-3 md:gap-4 transition-all duration-1000 delay-500 ${
                 isLoaded
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
             >
-              <FontAwesomeIcon
-                icon={item.icon}
-                className="text-2xl sm:text-3xl lg:text-4xl mb-2 text-[#FFD700] drop-shadow-lg"
-              />
-              <span className="text-xs sm:text-sm lg:text-base font-semibold text-center text-white drop-shadow">
-                {item.text}
-              </span>
+              <button className="bg-[#f49a25] text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold hover:bg-[#e38d1e] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 text-sm md:text-base">
+                <FontAwesomeIcon icon={faCalendarAlt} />
+                Book Your Safari
+              </button>
+              <button className="bg-white/10 backdrop-blur-sm text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base">
+                <FontAwesomeIcon icon={faPlay} className="text-[#f49a25]" />
+                Watch Video
+              </button>
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
 
-      {/* Bottom wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg
-          viewBox="0 0 1440 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          className="w-full h-auto"
+          {/* Right Column - Feature Cards */}
+          <div
+            className={`grid grid-cols-2 gap-3 md:gap-4 transition-all duration-1000 delay-700 ${
+              isLoaded
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
+            }`}
+          >
+            {[
+              {
+                icon: faCompass,
+                title: "Expert Guides",
+                desc: "Professional local guides",
+              },
+              {
+                icon: faPaw,
+                title: "Wildlife Tours",
+                desc: "Close encounters guaranteed",
+              },
+              {
+                icon: faMountain,
+                title: "Scenic Views",
+                desc: "Breathtaking landscapes",
+              },
+              {
+                icon: faBinoculars,
+                title: "Custom Tours",
+                desc: "Tailored experiences",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white/10 backdrop-blur-sm p-4 md:p-6 rounded-2xl hover:bg-white/20 transition-all duration-300 group"
+              >
+                <FontAwesomeIcon
+                  icon={feature.icon}
+                  className="text-2xl md:text-3xl text-[#f49a25] mb-2 md:mb-4 group-hover:scale-110 transition-transform duration-300"
+                />
+                <h3 className="text-white font-semibold mb-1 text-sm md:text-base">
+                  {feature.title}
+                </h3>
+                <p className="text-white/70 text-xs md:text-sm">
+                  {feature.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div
+          className={`absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 text-white animate-bounce transition-all duration-1000 delay-1000 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
         >
-          <path
-            d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 43.3C1200 47 1320 53 1380 56.7L1440 60V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z"
-            fill="#f8fafc"
-          />
-        </svg>
+          <FontAwesomeIcon icon={faAngleDown} className="text-xl md:text-2xl" />
+        </div>
       </div>
     </header>
   );
