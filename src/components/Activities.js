@@ -20,7 +20,7 @@ const activities = [
     subtext: "Great for close wildlife encounters",
     icon: faCar,
     image:
-      "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1559494487-a5bbc635ed2b?q=80&w=1716&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     bgColor: "bg-emerald-400",
   },
   {
@@ -56,7 +56,7 @@ const activities = [
     subtext: "Fits with any experience level",
     icon: faCamera,
     image:
-      "https://plus.unsplash.com/premium_photo-1661846340419-89bf27138124?q=80&w=1692&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1621139261252-27d1a67449f4?q=80&w=1870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     bgColor: "bg-teal-400",
   },
   {
@@ -86,7 +86,7 @@ export default function Activities() {
           {activities.map((activity, index) => (
             <div
               key={activity.title}
-              className="bg-white rounded-3xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl relative group"
+              className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl relative group"
             >
               {/* Mobile Layout */}
               <div className="block md:hidden">
